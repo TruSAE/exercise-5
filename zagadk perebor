@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+	
+	var Question = ['Маленький, пузатенький, а весь дом бережет', 'Никого не обижает, а ее все толкают', 'Родится с рогами, потом их теряет', 'Сидит дед, во сто шуб одет, кто его раздевает — слёзы проливает'];
+
+	var answer = ['замок', 'дверь', 'месяц', 'лук' ];
+
+		function readInt(){
+			var userAnswer = document.getElementById("userAnswer").value;
+			return userAnswer;
+		}
+		
+		function write(text){
+			document.getElementById("info").innerHTML = text;
+		}
+		
+		
+		function hide(id){
+			document.getElementById(id).style.display = "none";
+		}
+		
+		function shuffle() {
+				  	var index, valueIndex; 
+				  		for (var i = 0; i <= Question.length - 1; i++) {
+				    		index = Math.floor(Math.random()*i);// округлённое в меньшую сторону случайное 
+				    			valueIndex = Question[index];
+				    			Question[index] = Question[i];
+				    			Question[i] = valueIndex;
+				  		}
+				  		return Question;
+		}
+		
+		function AskQuestion () { 	
+				var answerCount = [];
+					for (var i = 0; i < Question1.length; i++) {
+						userAnswer1 = prompt ('Следующая загадка:\n ' + Question1[i]);
+						if (userAnswer1 == null) {
+							break;
+						} else {
+						str = userAnswer1.toLowerCase();
+							if (answer.indexOf(str) != -1) 
+								answerCount.push(1);
+						}		
+					}
+					return(answerCount.length);
+				
+		}
+
+	
+if (userAnswer1 = confirm('Мы загадаем Вам одну загадку<br>В случае правильного ответа на неё \n больше загадок не будет. Иначе последуют другие загадки. Вы согласны разгадать загадку?')) {  
+	
+
+		function guess(){
+			var Question1 = shuffle();
+			write('Загадка:  '  + Question1[0]);
+			var userAnswer = readInt();
+			var str = userAnswer. toLowerCase();
+				if (answer.indexOf(str) != -1) {
+					hide("button");
+					hide("userAnswer");
+					write('Всё верно! \n Игра окончена.');
+			} else {
+				Question1.splice(0, 1);
+				var nextQuest = AskQuestion();
+				alert('Правильных ответов  ' + nextQuest);
+		
+		
+
+	
+		
+		
+			}	
+	}				
+</script>
+</head>
+<body>
+
+<div class="content">
+		<?php
+		include "menu.php";
+		?>
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+
+			<h1>Игра в загадки</h1>
+
+			<div class="box">
+	
+				<p id="info">Загадка</p>
+				<input type="text" id="userAnswer">
+				<br>
+				<br>
+				<a href="#" onClick="guess();" id="button">Подтвердить</a>	
+
+			</div>
+
+        </div>
+    </div>
+</div>
+
+	
+
+</div>
+<div class="footer">
+	Copyright &copy; <?php echo date("Y");?> Alexey
+<div>
+
+
+</body>	
+</html>
